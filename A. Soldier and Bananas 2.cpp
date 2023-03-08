@@ -1,23 +1,17 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define IOS ios_base::sync_with_stdio(0)j; cin.tie(0);cout.tie(0);
-#define all(x).begin , (x).end()
-#define endl "\n"
-#define pb push_back
-#define lc (n*2)
-#define rc (n*2)+1
-#define mid (e+b)/2
 int main()
 {
-    long long int k,l,m,res, res2;
-    cin>>k>>l>>m;
-
-    res = l-m;
-    if(res>0){
-    cout<<res<<endl;
-    }else{
-    cout<<0<<endl;
+    int k,n,w;cin>>k>>n>>w;
+    int sum =0;
+    for(int i=1; i<=w; i++){
+        sum +=i; 
     }
-
-    return 0;
+    int res = sum*k;
+    int m = res-n;
+    if(m<0){
+        cout<<'0'<<endl;
+    }else{
+    cout<<m<<endl;
+    }
 }
