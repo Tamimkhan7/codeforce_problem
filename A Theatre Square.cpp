@@ -9,15 +9,13 @@ using namespace std;
 typedef long long int ll;
 typedef unsigned long long int llu;
 int main()
-
-    +
-    +
-
 {
-    long long int x, k, i, c = 0, sum = 0;
-    cin >> x;
-    if (x % 5 == 0)
-        cout << x / 5 << endl;
+    ll n, m, a, k;
+    cin >> n >> m >> a;
+    k = n * m;
+    ll l = a * a;
+    if (k > l)
+        cout << a << endl;
     else
-        cout << (x / 5) + 1 << endl;
+        cout << k << endl;
 }
