@@ -11,27 +11,21 @@ typedef unsigned long long int llu;
 int main()
 {
     faster;
-    ll n;
-    cin >> n;
-    if (n % 10 != 0)
+    ll t;
+    cin >> t;
+    while (t--)
     {
-        ll q = n % 10;
-        cout << q << endl;
-        ll w = n / 2;
-        if (w - q >= q)
+        ll n;
+        cin >> n;
+        ll arr[n];
+        for (ll i = 0; i < n; i++)
         {
-            ll p = w / 2;
-            ll m = w + p;
-            cout << m << endl;
+            cin >> arr[i];
         }
-        else
+        for (ll i = 0; i < n; i++)
         {
-            cout << w << endl;
+            if (arr[i] < arr[i + 1])
         }
-    }
-    else
-    {
-        ll q = n % 10;
-        cout << q << endl;
     }
 }
+// statement i have don't understand

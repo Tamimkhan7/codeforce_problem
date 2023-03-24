@@ -10,28 +10,20 @@ typedef long long int ll;
 typedef unsigned long long int llu;
 int main()
 {
-    faster;
-    ll n;
-    cin >> n;
-    if (n % 10 != 0)
+    ll n, k, m, sum = 5, l = 0, p = 0;
+    cin >> n >> k;
+    ll t = 240 - k;
+    for (ll i = 1; i <= n; i++)
     {
-        ll q = n % 10;
-        cout << q << endl;
-        ll w = n / 2;
-        if (w - q >= q)
+        m = sum * i;
+        l += m;
+        p++;
+        if (l > t)
         {
-            ll p = w / 2;
-            ll m = w + p;
-            cout << m << endl;
-        }
-        else
-        {
-            cout << w << endl;
+            p -= 1;
+            break;
         }
     }
-    else
-    {
-        ll q = n % 10;
-        cout << q << endl;
-    }
+    // cout << l << endl;
+    cout << p << endl;
 }

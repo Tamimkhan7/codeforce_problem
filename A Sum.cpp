@@ -10,28 +10,22 @@ typedef long long int ll;
 typedef unsigned long long int llu;
 int main()
 {
-    faster;
-    ll n;
-    cin >> n;
-    if (n % 10 != 0)
+    llu t;
+    cin >> t;
+    while (t--)
     {
-        ll q = n % 10;
-        cout << q << endl;
-        ll w = n / 2;
-        if (w - q >= q)
+        ll a, b, c;
+        cin >> a >> b >> c;
+        ll k = a + b;
+        ll l = b + c;
+        ll q = a + c;
+        if (k == c || l == a || q == b)
         {
-            ll p = w / 2;
-            ll m = w + p;
-            cout << m << endl;
+            cout << "YES" << endl;
         }
         else
         {
-            cout << w << endl;
+            cout << "NO" << endl;
         }
-    }
-    else
-    {
-        ll q = n % 10;
-        cout << q << endl;
     }
 }

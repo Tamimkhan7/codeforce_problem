@@ -10,28 +10,27 @@ typedef long long int ll;
 typedef unsigned long long int llu;
 int main()
 {
-    faster;
-    ll n;
-    cin >> n;
-    if (n % 10 != 0)
+
+    vector<ll> v, v2, jv;
+    ll k, n, i;
+    cin >> k >> n;
+    for (i = 1; i <= k; i++)
     {
-        ll q = n % 10;
-        cout << q << endl;
-        ll w = n / 2;
-        if (w - q >= q)
+        if (i % 2 == 0)
         {
-            ll p = w / 2;
-            ll m = w + p;
-            cout << m << endl;
+            v.push_back(i);
         }
         else
         {
-            cout << w << endl;
+            v2.push_back(i);
         }
     }
-    else
+    jv.reserve(v.size() + v2.size());
+    jv.insert(jv.end(), v2.begin(), v2.end());
+    jv.insert(jv.end(), v.begin(), v.end());
+    for (i = 0; i < jv.size(); i++)
     {
-        ll q = n % 10;
-        cout << q << endl;
+        cout << jv[n - 1] << endl;
+        break;
     }
 }

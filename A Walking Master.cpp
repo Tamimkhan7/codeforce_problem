@@ -11,27 +11,21 @@ typedef unsigned long long int llu;
 int main()
 {
     faster;
-    ll n;
-    cin >> n;
-    if (n % 10 != 0)
+    ll t;
+    cin >> t;
+    while (t--)
     {
-        ll q = n % 10;
-        cout << q << endl;
-        ll w = n / 2;
-        if (w - q >= q)
+        ll a, b, c, d, ans = 0;
+        cin >> a >> b >> c >> d;
+        ll y = d - b;
+        ans += y;
+        a += y;
+        if ((c - a) > 0 || (y < 0))
         {
-            ll p = w / 2;
-            ll m = w + p;
-            cout << m << endl;
+            cout << -1 << endl;
+            continue;
         }
-        else
-        {
-            cout << w << endl;
-        }
-    }
-    else
-    {
-        ll q = n % 10;
-        cout << q << endl;
+        ans += (a - c);
+        cout << ans << endl;
     }
 }
