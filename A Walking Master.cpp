@@ -19,7 +19,7 @@ int main()
         cin >> a >> b >> c >> d;
         ll y = d - b;
         ans += y;
-        a += y;
+        a += y; 
         if ((c - a) > 0 || (y < 0))
         {
             cout << -1 << endl;
