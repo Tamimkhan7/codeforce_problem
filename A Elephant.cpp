@@ -9,10 +9,6 @@ using namespace std;
 typedef long long int ll;
 typedef unsigned long long int llu;
 int main()
-
-    +
-    +
-
 {
     long long int x, k, i, c = 0, sum = 0;
     cin >> x;
