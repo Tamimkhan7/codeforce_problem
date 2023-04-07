@@ -19,13 +19,30 @@ int main()
     {
         if (s[i] == 'a' || s[i] == 'e' || s[i] == 'i' || s[i] == 'o' || s[i] == 'u')
         {
-            k += '.';
+            if (i == 0)
+            {
+                k += '.';
+            }
+            else if (i == 1)
+            {
+            }
+            else
+            {
+                if (s[i] == 'a' || s[i] == 'e' || s[i] == 'i' || s[i] == 'o' || s[i] == 'u')
+                {
+                    k += '.';
+                }
+                else
+                {
+                    k += s[i];
+                }
+            }
+            cout << k << endl;
         }
         else
         {
             k += s[i];
         }
     }
-    cout << k << endl;
 }
 // pore korbo
