@@ -21,6 +21,6 @@ int main()
         cin >> s;
         for (ll i = 0; i < n; i++)
         {
-                }
+      }
     }
 }
