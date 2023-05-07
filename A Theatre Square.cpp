@@ -10,12 +10,24 @@ typedef long long int ll;
 typedef unsigned long long int llu;
 int main()
 {
-    ll n, m, a, k;
-    cin >> n >> m >> a;
-    k = n * m;
-    ll l = a * a;
-    if (k > l)
-        cout << a << endl;
+    long long n, m, a, k, l;
+    cin >> m >> n >> a;
+    if (m % a == 0)
+    {
+        k = m / a;
+    }
     else
-        cout << k << endl;
+    {
+        k = m / a + 1;
+    }
+    if (n % a == 0)
+    {
+        l = n / a;
+    }
+    else
+    {
+        l = n / a + 1;
+    }
+    cout << k * l << endl;
 }
+// right code
