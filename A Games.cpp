@@ -10,17 +10,4 @@ typedef long long int ll;
 typedef unsigned long long int llu;
 int main()
 {
-    faster;
-    int n;
-    cin >> n;
-    int c = 0;
-    while (n != 0)
-    {
-        if (n % 2 != 0)
-        {
-            c++;
-        }
-           n = n / 2;
-    }
-    cout << c << endl;
 }

@@ -13,14 +13,16 @@ int main()
     faster;
     int n;
     cin >> n;
-    int c = 0;
-    while (n != 0)
+    for (int i = 1; i < n; i++)
     {
-        if (n % 2 != 0)
-        {
-            c++;
-        }
-           n = n / 2;
+        if (i % 2 != 0)
+            cout << "I hate that ";
+        else
+            cout << "I love that ";
     }
-    cout << c << endl;
+    if (n % 2 != 0)
+        cout << "I hate it ";
+    else
+        cout << "I love it ";
+    cout << endl;
 }
