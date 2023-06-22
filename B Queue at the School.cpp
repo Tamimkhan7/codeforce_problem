@@ -14,25 +14,28 @@ int main()
     cin >> n >> k;
     string s, ss;
     cin >> s;
-    while (k--)
+    for (int i = 0; i < n; i++)
     {
-        for (int i = 0; i < n; i++)
+        if (k == 2)
         {
-            if (s[i] == 'B' && s[i + 1] == 'G')
-            {
-                ss += s[i + 1];
-                ss += s[i];
-            }
-            else if (s[i] == 'G' && s[i + 1] == 'B')
+            if (s[i] == 'G')
             {
                 ss += s[i];
+                ss += s[i - 1];
             }
             else
             {
-                ss += s[i];
+                ss += s[i + 1];
             }
         }
+        // else if (s[i] == 'G')
+        // {
+        //     ss += s[i - 1];
+        // }
+        // else
+        // {
+        //     ss += s[i + 1];
+        // }
     }
     cout << ss << endl;
 }
-// bakita pore korbo
