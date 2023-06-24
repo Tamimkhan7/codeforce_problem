@@ -16,28 +16,52 @@ int main()
 {
     int n;
     cin >> n;
-    int arr[n];
-    for (int i = 0; i < n; i++)
-        cin >> arr[i];
-    int c = 0, k = 0;
+    int arr[n], sum = 0;
     for (int i = 0; i < n; i++)
     {
-        if (arr[i] <= arr[i + 1])
+        cin >> arr[i];
+    }
+    sort(arr, arr + n);
+    int c = 0, k = 0, p = 0, q = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if (arr[i] == 4)
         {
             c++;
         }
+        else if (arr[i] == 3)
+        {
+            k++;
+        }
+        else if (arr[i] == 2)
+        {
+            p++;
+        }
         else
         {
-            if (k < c)
-            {
-                k = c;
-            }
-            c = 0;
+            q++;
         }
     }
-    // cout << k << endl;
-    if (c > k)
-        cout << c << endl;
-    else
-        cout << k+1 << endl;
+    // for (int i = 0; i < n; i++)
+    //     cout << arr[i] << " ";
+    // cout << endl;
+
+    int b, w, z, r;
+    b = p * 2 + q * 1;
+    w = b / 4;
+    r = b % 4;
+    if (p < 2 && q == 0)
+    {
+        w = p;
+    }
+    else if (r <= k)
+    {
+        k = k;
+    }
+    else if (b % 4 != 0)
+    {
+        w++;
+    }
+    z = w + c + k;
+    cout << z << endl;
 }
