@@ -12,7 +12,7 @@ int main()
             cout << "BRONZE" << endl;
         else if (x > 3 && x < 7)
             cout << "SILVER" << endl;
-        else
-            cout << "GOLD" << endl;
+        else            
+        cout << "GOLD" << endl;
     }
 }

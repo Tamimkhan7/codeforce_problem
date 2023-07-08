@@ -1,4 +1,4 @@
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 #include <ext/pb_ds/tree_policy.hpp>
 using namespace __gnu_pbds;
@@ -7,7 +7,6 @@ using namespace __gnu_pbds;
     ios_base::sync_with_stdio(0); \
     cin.tie(0);                   \
     cout.tie(0);
-
 #define sq(x) (x) * (x)
 #define PI acos(-1.0)
 #define all(x) x.begin(), x.end()
@@ -15,15 +14,26 @@ using namespace __gnu_pbds;
 #define mod 1000000007
 int main()
 {
-    int n, sum = 0, missing, a;
+    long long int n;
     cin >> n;
-    for (int i = 1; i < n; i++)
+    int c = 0;
+    if (n == 0 || n == 1)
     {
-        cin >> a;
-        sum += a;
+        cout << "NO" << endl;
     }
-    missing = ((n - 2) * n) - sum;
-    cout << missing << endl;
-
-    return 0;
+    else
+    {
+        for (int i = 2; i < sqrt(n); i++)
+        {
+            if (n % i == 0)
+            {
+                c++;
+                break;
+            }
+        }
+        if (c == 0)
+            cout << "YES" << endl;
+        else
+            cout << "NO" << endl;
+    }
 }
