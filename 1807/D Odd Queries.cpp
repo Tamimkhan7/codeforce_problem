@@ -14,32 +14,38 @@ using namespace __gnu_pbds;
 #define mod 1000000007
 void solve()
 {
-    int n;
-    cin >> n;
+    int n, q;
+    cin >> n >> q;
     int arr[n];
-    for (int i = 0; i < n; i++)
-        cin >> arr[i];
-    int c = 0, k, m, p, q, r;
-
-    for (int i = 0; i < n; i++)
+    while (q--)
     {
-        for (int j = 0; j < n; j++)
+        for (int i = 1; i <= n; i++)
         {
-            k = arr[i];
-            m = arr[j];
-            if (k < m)
-            {
-                p = k - m;
-                k = m;
-            }
+            cin >> arr[i];
         }
-        cout << p << " ";
+        int l, r, k, sum = 0;
+        cin >> l >> r >> k;
+        for (int i = 1; i < l; i++)
+        {
+            sum += arr[i];
+        }
+        for (int i = r + 1; i <= n; i++)
+        {
+            sum += arr[i];
+        }
+        for (int i = l; i <= r; i++)
+        {
+            sum += k;
+        }
+        if (sum % 2 != 0)
+            cout << "YES" << endl;
+        else
+            cout << "NO" << endl;
     }
-    cout << endl;
 }
-
 int main()
 {
+    faster;
     int t;
     cin >> t;
     while (t--)

@@ -17,27 +17,21 @@ void solve()
     int n;
     cin >> n;
     int arr[n];
+    int sum = 0, sum2 = 0;
     for (int i = 0; i < n; i++)
         cin >> arr[i];
-    int c = 0, k, m, p, q, r;
-
     for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < n; j++)
-        {
-            k = arr[i];
-            m = arr[j];
-            if (k < m)
-            {
-                p = k - m;
-                k = m;
-            }
-        }
-        cout << p << " ";
+        if (arr[i] % 2 == 0)
+            sum += arr[i];
+        else
+            sum2 += arr[i];
     }
-    cout << endl;
+    if (sum > sum2)
+        cout << "YES" << endl;
+    else
+        cout << "NO" << endl;
 }
-
 int main()
 {
     int t;

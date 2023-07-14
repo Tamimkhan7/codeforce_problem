@@ -16,30 +16,19 @@ void solve()
 {
     int n;
     cin >> n;
-    int arr[n];
-    for (int i = 0; i < n; i++)
-        cin >> arr[i];
-    int c = 0, k, m, p, q, r;
-
+    string s, ss;
+    cin >> s;
     for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < n; j++)
+        if (s[i] == s[i + 1])
         {
-            k = arr[i];
-            m = arr[j];
-            if (k < m)
-            {
-                p = k - m;
-                k = m;
-            }
+            ss[i] += s[i].replace(0);
         }
-        cout << p << " ";
     }
-    cout << endl;
 }
-
 int main()
 {
+    faster;
     int t;
     cin >> t;
     while (t--)
