@@ -10,37 +10,44 @@ typedef long long int ll;
 typedef unsigned long long int llu;
 int main()
 {
-    long long int t, m, res, res2;
+    faster;
+    int t, p, q;
     cin >> t;
     while (t--)
     {
         int n;
         cin >> n;
-        res = n / 2021;
-        res2 = n / 2020;
-        if (res >= res2)
+        q = n;
+        if (n % 2020 == 0 || n % 2021 == 0)
         {
-            m = n - (2021 * res);
-            if (m == 2021 || m == 2020 || m == 0)
-            {
-                cout << "YES" << endl;
-            }
-            else
-            {
-                cout << "No" << endl;
-            }
+            cout << "YES" << endl;
         }
         else
         {
-            m = n - (2020 * (res2 - 1));
-            if (m == 2021 || m == 2020 || m == 0)
+            int c = 0, k = 0;
+            while (n >= 2020)
+            {
+                if (n % 2020 == 0)
+                {
+                    k++;
+                    n -= 2020;
+                }
+                else
+                {
+                    c++;
+                    n -= 2021;
+                }
+            }
+            p = k * 2020 + c * 2021;
+            if (p == q)
             {
                 cout << "YES" << endl;
             }
             else
             {
-                cout << "No" << endl;
+                cout << "NO" << endl;
             }
+            // p -= q;
         }
     }
 }

@@ -17,28 +17,28 @@ void solve()
     int n, q;
     cin >> n >> q;
     int arr[n];
+    for (int i = 0; i < n; i++)
+    {
+        cin >> arr[i];
+    }
     while (q--)
     {
-        for (int i = 1; i <= n; i++)
-        {
-            cin >> arr[i];
-        }
-        int l, r, k, sum = 0;
+        long long int sum = 0, sum2 = 0;
+        int l, r, k;
         cin >> l >> r >> k;
-        for (int i = 1; i < l; i++)
+        for (int i = 0; i < n; i++)
         {
             sum += arr[i];
         }
-        for (int i = r + 1; i <= n; i++)
+        for (int i = l - 1; i < r; i++)
         {
-            sum += arr[i];
+            sum2 += k;
+            sum -= arr[i];
         }
-        for (int i = l; i <= r; i++)
-        {
-            sum += k;
-        }
+         sum = sum + sum2;
         if (sum % 2 != 0)
-            cout << "YES" << endl;
+            cout
+                << "YES" << endl;
         else
             cout << "NO" << endl;
     }

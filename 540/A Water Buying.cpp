@@ -12,22 +12,6 @@ using namespace __gnu_pbds;
 #define all(x) x.begin(), x.end()
 #define nl '\n'
 #define mod 1000000007
-void solve()
-{
-    int n;
-    cin >> n;
-    string s, ss;
-    cin >> s;
-    for (int i = 0; i < n; i++)
-    {
-        int k = s[i];
-        if (k == s[i + 1])
-        {
-            ss[i] += 1;
-        }
-    }
-    cout << ss << endl;
-}
 int main()
 {
     faster;
@@ -35,6 +19,22 @@ int main()
     cin >> t;
     while (t--)
     {
-        solve();
+        long long int n, a, b, k, m, p, q;
+        cin >> n >> a >> b;
+        k = (b / 2) + (b % 2);
+        // cout << k << endl;
+        if (k > a)
+        {
+            m = n * a;
+        }
+        else
+        {
+            p = n / 2;
+            p *= b;
+            q = n % 2;
+            q *= a;
+            m = q + p;
+        }
+        cout << m << endl;
     }
 }

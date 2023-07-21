@@ -16,24 +16,23 @@ int main()
 {
     int n;
     cin >> n;
-    int arr[n], sum = 0;
+    int arr[n];
     for (int i = 0; i < n; i++)
-    {
         cin >> arr[i];
-    }
+
     sort(arr, arr + n);
     int c = 0, k = 0, p = 0, q = 0;
     for (int i = 0; i < n; i++)
     {
-        if (arr[i] == 4)
+        if (arr[i] == 1)
         {
             c++;
         }
-        else if (arr[i] == 3)
+        else if (arr[i] == 2)
         {
             k++;
         }
-        else if (arr[i] == 2)
+        else if (arr[i] == 3)
         {
             p++;
         }
@@ -42,26 +41,64 @@ int main()
             q++;
         }
     }
-    // for (int i = 0; i < n; i++)
-    //     cout << arr[i] << " ";
-    // cout << endl;
-
-    int b, w, z, r;
-    b = p * 2 + q * 1;
-    w = b / 4;
-    r = b % 4;
-    if (p < 2 && q == 0)
+    int z = 0;
+    for (int i = 0; i < n; i++)
     {
-        w = p;
+        if (arr[i] != arr[i + 1])
+            z++;
     }
-    else if (r <= k)
+    // cout << z << endl;
+    int u = 0, w = 0, v = 0, y = 0, x = 0, t;
+    while (z > 0)
     {
-        k = k;
+        if (p > 0 && c > 0)
+        {
+            t = c * 1 + p * 3;
+            if (t > 0)
+            {
+                u++;
+                t -= 4;
+            }
+        }
+        else if (c > 0 && k > 0)
+        {
+            t = k * 2 + c * 1;
+            if (t > 0)
+            {
+                w++;
+                t -= 3;
+            }
+        }
+        else if (p > 0)
+        {
+            t = p * 3;
+            if (t > 0)
+            {
+                v++;
+                t -= 3;
+            }
+        }
+        else if (k > 0)
+        {
+            t = k * 2;
+            if (t > 0)
+            {
+                y++;
+                t -= 4;
+            }
+        }
+        else if (c > 0)
+        {
+            t = c * 1;
+            if (t > 0)
+            {
+                x++;
+                t -= 4;
+            }
+        }
+        z--;
     }
-    else if (b % 4 != 0)
-    {
-        w++;
-    }
-    z = w + c + k;
-    cout << z << endl;
+    cout << u << " " << w << " " << v << " " << y << " " << x << endl;
+    int b = x + y + v + w + u;
+    // cout << b << endl;
 }
