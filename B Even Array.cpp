@@ -11,21 +11,43 @@ typedef unsigned long long int llu;
 int main()
 {
     faster;
-    ll t;
+    int t;
     cin >> t;
     while (t--)
     {
-        ll n;
+        int n;
         cin >> n;
-        ll arr[n];
-        for (ll i = 0; i < n; i++)
-        {
+        int arr[n];
+        for (int i = 0; i < n; i++)
             cin >> arr[i];
-        }
-        for (ll i = 0; i < n; i++)
+        if (n % 2 == 0)
         {
-            if (arr[i] < arr[i + 1])
+            n = n;
         }
+        else
+        {
+            if (n == 1)
+                n = n;
+            else
+                n -= 1;
+        }
+        for (int i = 0; i < n; i++)
+        {
+            swap(arr[i], arr[i + 1]);
+            i++;
+        }
+        int c = 0;
+        for (int i = 0; i < n; i++)
+        {
+            if (arr[i] % 2 == 0 && arr[i + 1] != 0)
+            {
+                c++;
+                i++;
+            }
+               }
+        if (n == 1)
+            cout << -1 << endl;
+        else
+            cout << c << endl;
     }
 }
-// statement i have don't understand
