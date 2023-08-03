@@ -11,38 +11,31 @@ typedef unsigned long long int llu;
 int main()
 {
     faster;
-    ll t;
+    int t;
     cin >> t;
     while (t--)
     {
-        int n, c = 0;
+        int n;
         cin >> n;
-        while (n > 1)
+        string s, k;
+        cin >> s;
+        int sum = 0;
+        k = s[0];
+        sum += stoi(k);
+        for (int i = 1; i < n; i++)
         {
-            if (n % 6 == 0)
+            k = s[i];
+            sum += stoi(k);
+            if (sum > 1)
             {
-                c++;
-                n /= 6;
+                sum -= s[i];
+                cout << "-";
             }
             else
             {
-                c++;
-                n *= 2;
-                if (n % 6 == 0)
-                {
-                    c++;
-                    n /= 6;
-                }
-                else
-                {
-                    break;
-                }
+                cout << "+";
             }
         }
-        // cout << n << endl;
-        if (n == 0 || n == 1)
-            cout << c << endl;
-        else
-            cout << -1 << endl;
+        cout << endl;
     }
 }
