@@ -19,28 +19,26 @@ typedef unsigned long long int llu;
 int main()
 {
     faster;
-    int t;
-    cin >> t;
-    while (t--)
+    int n;
+    cin >> n;
+    int arr[n];
+    for (int i = 0; i < n; i++)
+        cin >> arr[i];
+    int c = 0, k = 0;
+    int maxi = arr[0];
+    int mini = arr[0];
+    for (int i = 1; i < n; i++)
     {
-        int n;
-        cin >> n;
-        n *= 2;
-        int arr[n];
-        for (int i = 0; i < n; i++)
-            cin >> arr[i];
-        int c = 0;
-        for (int i = 0; i < n; i++)
+        if (arr[i] > maxi)
         {
-            if (arr[i] % 2 != 0)
-            {
-                c++;
-            }
+            maxi = arr[i];
+            c++;
         }
-        if (c == n / 2)
-            cout << "Yes" << endl;
-        else
-            cout << "No" << endl;
+        else if (mini > arr[i])
+        {
+            mini = arr[i]; // 50
+            c++;
+        }
     }
-    return 0;
+    cout << c << endl;
 }

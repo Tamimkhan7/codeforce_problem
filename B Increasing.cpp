@@ -25,22 +25,21 @@ int main()
     {
         int n;
         cin >> n;
-        n *= 2;
         int arr[n];
         for (int i = 0; i < n; i++)
             cin >> arr[i];
         int c = 0;
-        for (int i = 0; i < n; i++)
+        sort(arr, arr + n);
+        for (int i = 0; i < n - 1; i++)
         {
-            if (arr[i] % 2 != 0)
-            {
+            if (arr[i] < arr[i + 1])
                 c++;
-            }
         }
-        if (c == n / 2)
-            cout << "Yes" << endl;
+        // cout << c << endl;
+        if (c == n - 1)
+            cout << "YES" << endl;
         else
-            cout << "No" << endl;
+            cout << "NO" << endl;
     }
     return 0;
 }

@@ -19,28 +19,29 @@ typedef unsigned long long int llu;
 int main()
 {
     faster;
-    int t;
-    cin >> t;
-    while (t--)
+    string s, ss;
+    set<string> v;
+    vector<string> v1;
+    cin >> s;
+    int c = 0;
+    int len = s.size();
+    for (int i = 0; i < len; i++)
     {
-        int n;
-        cin >> n;
-        n *= 2;
-        int arr[n];
-        for (int i = 0; i < n; i++)
-            cin >> arr[i];
-        int c = 0;
-        for (int i = 0; i < n; i++)
-        {
-            if (arr[i] % 2 != 0)
-            {
-                c++;
-            }
-        }
-        if (c == n / 2)
-            cout << "Yes" << endl;
-        else
-            cout << "No" << endl;
+        ss = s[i];
+        v.insert(ss);
     }
+    int n = v.size();
+    for (auto i : v)
+    {
+        v1.push_back(i);
+    }
+    for (int i = 0; i < n; i++)
+    {
+        cout << v1[i] << " ";
+    }
+    // if (c == 3)
+    //     cout << "YES" << endl;
+    // else
+    //     cout << "NO" << endl;
     return 0;
 }

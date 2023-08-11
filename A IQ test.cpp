@@ -14,29 +14,38 @@ using namespace __gnu_pbds;
 #define mod 1000000007
 int main()
 {
-    int p;
+    faster;
     int n;
     cin >> n;
-    int arr[n], c;
-    for (int i = 1; i <= n; i++)
-    {
+    int arr[n];
+    for (int i = 0; i < n; i++)
         cin >> arr[i];
-    }
-    // sort(arr, arr+n);
-    for (int i = 1; i <= n; i++)
-    {
 
-        int a = arr[i];
-        int b = arr[i + 1];
-        if (a > b && b % a != 0)
+    int k = 0, c = 0, p, q;
+    for (int i = 0; i < n; i++)
+    {
+        if (arr[i] % 2 == 0)
         {
-            cout << i << endl;
+            c++;
+            p = i;
+        }
+        else
+        {
+            k++;
+            q = i;
+        }
+    }
+    // cout << p << " " << q << " " << endl;
+    for (int i = 0; i < n; i++)
+    {
+        if (c > k)
+        {
+            cout << q + 1 << endl;
             break;
         }
-        else if (b > a && b % a != 0)
+        else
         {
-            c = i + 1;
-            cout << c << endl;
+            cout << p + 1 << endl;
             break;
         }
     }
