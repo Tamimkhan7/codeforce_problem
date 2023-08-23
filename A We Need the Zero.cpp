@@ -25,26 +25,56 @@ int main()
     {
         int n;
         cin >> n;
-        int arr[n];
+        int arr[n], ar[n];
         for (int i = 0; i < n; i++)
             cin >> arr[i];
-        int sum, p;
-        for (int i = 0; i < n; i++)
+        int x;
+        int p = *max_element(arr, arr + n);
+        // p += 1;
+        int sum;
+        for (int i = p; i >= 0; i--)
         {
-            if (i == 0)
+            for (int j = 0; j < n; j++)
             {
-                sum = arr[i] ^ arr[i + 1];
-                i++;
+                ar[j] = arr[j] ^ i;
             }
-            else
+            for (int k = 0; k < n; k++)
             {
-                p = sum ^ arr[i];
-                sum = p;
+                if (k == 0)
+                    sum = ar[k];
+                else
+                    sum ^= ar[k];
+            }
+            if (sum == 0)
+            {
+                cout << i << endl;
+                break;
             }
         }
-        cout << sum << endl;
-        sum = 0;
+        p = 2222;
+        if (sum != 0)
+        {
+            for (int i = 0; i < p; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    ar[j] = arr[j] ^ i;
+                }
+                for (int k = 0; k < n; k++)
+                {
+                    if (k == 0)
+                        sum = ar[k];
+                    else
+                        sum ^= ar[k];
+                }
+                if (sum == 0)
+                {
+                    cout << i << endl;
+                    break;
+                }
+            }
+        }
+        if (sum != 0)
+            cout << -1 << endl;
     }
-
-    return 0;
 }
