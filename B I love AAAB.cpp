@@ -27,32 +27,49 @@ int main()
         cin >> s;
         int len = s.size();
         int c = 0, k = 0;
-
-        for (int i = 0; i < len; i++)
+        if (s[0] == 'B' || len < 2)
         {
-            if (s[i] == 'A')
-            {
-                c++;
-            }
-            if (s[i] == 'B')
-            {
-                k++;
-            }
-            // if (c >= k)
-            // {
-            //     c = 0, k = 0;
-            //     continue;
-            // }
-            // else
-            // {
-            //     break;
-            // }
-        }
-        // cout << c << " " << k << endl;
-        if (c > k && c > 1)
-            cout << "YES" << endl;
-        else
             cout << "NO" << endl;
+        }
+        else
+        {
+            for (int i = 0; i < len; i++)
+            {
+                if (s[i] == 'A')
+                {
+                    c++;
+                }
+                else
+                {
+                    if (c > 0)
+                    {
+                        if (s[i] == 'B')
+                        {
+                            k++;
+                        }
+                        if (c >= k)
+                        {
+                            // c = 0;
+                            // k = 0;
+                            continue;
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
+            cout << c << " " << k << endl;
+            if (c >= k)
+                cout << "YES" << endl;
+            else
+                cout << "NO" << endl;
+        }
     }
     return 0;
 }

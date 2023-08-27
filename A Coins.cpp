@@ -16,22 +16,35 @@ typedef unsigned long long int llu;
 #define len(a) sizeof(a)
 #define lc (n * 2)
 #define rc ((n * 2) + 1)
-int main()
+void solve()
 {
-    faster;
-    string s;
-    cin >> s;
-    int len = s.size();
-    int c = 0, k = 0, m, p = 0;
-    for (int i = 0; i < len; i++)
+    int n, k;
+    cin >> n >> k;
+    int c = 0;
+    for (int i = 1; i <= n; i++)
     {
-        if (s[i] == '4' || s[i] == '7')
+        int p = 2 * i + k * i;
+        if (p == n)
         {
+            cout << i << endl;
             c++;
+            break;
         }
     }
-    if (c == 4 || c == 7)
+    cout << c << endl;
+    if (c != 0)
         cout << "YES" << endl;
     else
         cout << "NO" << endl;
+}
+int main()
+{
+    faster;
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        solve();
+    }
+    return 0;
 }
