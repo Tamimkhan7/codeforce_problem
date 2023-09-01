@@ -5,9 +5,17 @@ using namespace std;
     ios_base::sync_with_stdio(0); \
     cin.tie(0);                   \
     cout.tie(0);
+#define sq(x) (x) * (x)
+#define PI acos(-1.0)
+#define all(x) x.begin(), x.end()
 #define mod 1000000007
 typedef long long int ll;
 typedef unsigned long long int llu;
+#define pb push_back
+#define pop pop_back()
+#define len(a) sizeof(a)
+#define lc (n * 2)
+#define rc ((n * 2) + 1)
 int main()
 {
     faster;
@@ -17,27 +25,19 @@ int main()
     {
         int n;
         cin >> n;
-        string s, k, p;
-        cin >> s;
-        int sum, x;
-        k = s[0];
-        sum = stoi(k);
-        // cout << sum << endl;
-        for (int i = 1; i < n; i++)
+        int arr[n];
+        for (int i = 1; i <= n; i++)
+            cin >> arr[i];
+        int c = 0;
+        for (int i = 1; i <= n; i++)
         {
-            p = s[i];
-            x = stoi(p);
-            sum += x;
-            if (sum > 1)
+            if (arr[i] == i)
             {
-                sum -= 2;
-                cout << "-";
-            }
-            else
-            {
-                cout << "+";
+                c++;
+                // swap(arr[i], arr[i + 1]);
             }
         }
-        cout << endl;
+        cout << (c / 2) + (c % 2) << endl;
     }
+    return 0;
 }
