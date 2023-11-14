@@ -16,40 +16,14 @@ typedef unsigned long long int llu;
 #define len(a) sizeof(a)
 #define lc (n * 2)
 #define rc ((n * 2) + 1)
+#define p 1e9+7
 void solve()
 {
-    ll n, k;
+    int n, k;
     cin >> n >> k;
-    vector<ll> v;
-    ll p = k * 2;
-    for (int i = 1; i <= p; i++)
-    {
-        if (i % n != 0)
-        {
-            v.push_back(i);
-        }
-    }
-    ll l = 0, r = p;
-    // k -= n;
-    while (l <= r)
-    {
-        ll mid = (l + r) / 2;
-        if (v[mid] == v[k])
-        {
-            cout << v[mid] << endl;
-            return;
-        }
-        else if (v[mid] > v[k])
-        {
-            r = mid - 1;
-        }
-        else
-        {
-            l = mid + 1;
-        }
-    }
-    // k -= n;
-    // cout << v[k] << endl;
+    ll res = (k-1)/(n-1)+k;
+    cout<<res<<endl;
+
 }
 int main()
 {
