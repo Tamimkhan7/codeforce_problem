@@ -7,98 +7,53 @@ using namespace __gnu_pbds;
     ios_base::sync_with_stdio(0); \
     cin.tie(0);                   \
     cout.tie(0);
-#define sq(x) (x) * (x)
-#define PI acos(-1.0)
-#define all(x) x.begin(), x.end()
-#define nl '\n'
-#define mod 1000000007
+
 int main()
 {
+    faster;
     int n;
-    cin >> n;
-    int arr[n];
-    for (int i = 0; i < n; i++)
-        cin >> arr[i];
-
-    sort(arr, arr + n);
-    int c = 0, k = 0, p = 0, q = 0;
-    for (int i = 0; i < n; i++)
+    cin>>n;
+    int a[n];
+    for(int i=0; i<n; i++)cin>>a[i];
+    sort(a, a+n);
+    int four=0, three=0, two=0, one=0;
+    for(int i=0; i<n; i++)if(a[i]==4)four++;
+        else if (a[i]==3)three++;
+        else if(a[i]==2)two++;
+        else one++;
+    int ans=0;
+    while(three>0)
     {
-        if (arr[i] == 1)
+        ans++;
+        if(one>0)one--;
+        three--;
+    }
+    while(two>0)
+    {
+        ans++;
+        if(one>0)
         {
-            c++;
-        }
-        else if (arr[i] == 2)
-        {
-            k++;
-        }
-        else if (arr[i] == 3)
-        {
-            p++;
+            one-=2;
+            two--;
         }
         else
         {
-            q++;
+            two-=2;
         }
     }
-    int z = 0;
-    for (int i = 0; i < n; i++)
+    //cout<<one<<' '<<two<<' '<<three<<' '<<four<<'\n';
+    int res;
+    if(one>0)
     {
-        if (arr[i] != arr[i + 1])
-            z++;
+        if(one%4==0)
+            res = one/4;
+        else
+        {
+            res = one/4;
+            res++;
+        }
+
+        cout<<ans+four+res<<'\n';
     }
-    // cout << z << endl;
-    int u = 0, w = 0, v = 0, y = 0, x = 0, t;
-    while (z > 0)
-    {
-        if (p > 0 && c > 0)
-        {
-            t = c * 1 + p * 3;
-            if (t > 0)
-            {
-                u++;
-                t -= 4;
-            }
-        }
-        else if (c > 0 && k > 0)
-        {
-            t = k * 2 + c * 1;
-            if (t > 0)
-            {
-                w++;
-                t -= 3;
-            }
-        }
-        else if (p > 0)
-        {
-            t = p * 3;
-            if (t > 0)
-            {
-                v++;
-                t -= 3;
-            }
-        }
-        else if (k > 0)
-        {
-            t = k * 2;
-            if (t > 0)
-            {
-                y++;
-                t -= 4;
-            }
-        }
-        else if (c > 0)
-        {
-            t = c * 1;
-            if (t > 0)
-            {
-                x++;
-                t -= 4;
-            }
-        }
-        z--;
-    }
-    cout << u << " " << w << " " << v << " " << y << " " << x << endl;
-    int b = x + y + v + w + u;
-    // cout << b << endl;
+    else cout<<ans+four<<'\n';
 }
