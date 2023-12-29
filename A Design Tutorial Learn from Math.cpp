@@ -1,55 +1,38 @@
 #include <bits/stdc++.h>
 using namespace std;
-bool is_prime(int n)
-{
-    int ans=0;
-    for(int i=2; i*i<=n; i++)
-    {
-        if(n%i==0)
-        {
-            ans++;
-            break;
-        }
-    }
-        if(ans)return false;
-        else return true;
-}
 int main()
 {
-    int a;
-    cin>>a;
-    if(a%2==0)
+    int n;
+    cin >> n;
+    int k, res;
+    if (n < 100)
     {
-        int x = a/2;
-        if(is_prime(x))
+        if (n % 2 == 0)
         {
-            cout<<x-1<<' '<<x+1<<'\n';
+            res = ceil(n / 3);
+            // cout<<res<<endl;
+            k = n - res;
+            cout << res << " " << k << endl;
         }
         else
         {
-            cout<<x<<' '<<x<<'\n';
-
+            if (n % 3 == 0)
+            {
+                res = ceil(n / 3);
+                k = n - (res + 1);
+                cout << res + 1 << " " << k << endl;
+            }
+            else
+            {
+                res = n / 3;
+                k = n - (res + 1);
+                cout << res + 1 << " " << k << endl;
+            }
         }
     }
     else
     {
-        int x = a/2;
-        int y = (a/2)+1;
-        if(is_prime(x)==0 && is_prime(y)==0)
-        {
-            cout<<x<<' '<<y<<'\n';
-            return 0;
-        }
-        while((is_prime(x)== false) || (is_prime(y)== false))
-        {
-            x--;
-            y++;
-            // cout<<x<<' '<<y<<'\n';
-            if((is_prime(x)== false) && (is_prime(y)== false))
-            {
-                cout<<x<<' '<<y<<'\n';
-               return 0;
-            }
-        }
+        res = n / 2;
+        cout << res << " " << res << endl;
     }
 }
