@@ -17,15 +17,34 @@ int32_t main()
     {
         int n;
         cin >> n;
-        ll ans = 0;
+        ll ans = 0, ans2 = 0;
+        vector<ll> v;
         for (int i = 1; i <= n; i++)
         {
             ll x = 1LL * pow(2, i);
             if (x <= n)
-                ans -= x;
+            {
+                ans += x;
+                cout << "1  " << ans << '\n';
+                v.push_back(x);
+            }
             else
-                ans += i;
+            {
+                int flag = 0;
+                for (int j = 0; j < v.size(); j++)
+                {
+                    if (v[j] == i)
+                    {
+                        flag = 1;
+                    }
+                }
+                if (flag == 0)
+                {
+                    ans2 += i;
+                    cout << "2  " << ans2 << '\n';
+                }
+            }
         }
-        cout << ans - 1 << '\n';
+        cout << ans2 - (ans + 1) << '\n';
     }
 }
