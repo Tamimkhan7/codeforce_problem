@@ -1,0 +1,1 @@
+{"name":"Local: A","url":"/home/tamim/Desktop/codeforce_problem/A. Anton and Letters.cpp","tests":[{"id":1704089330978,"input":"{a, b, c}","output":""},{"id":1704089650578,"input":"{b, a, b, a}\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/tamim/Desktop/codeforce_problem/A. Anton and Letters.cpp","group":"local","local":true}
