@@ -76,7 +76,7 @@ int32_t main()
         a[i] = v[i];
     }
     sort(all(v), greater<ll>());
-    sort(all(a), greater<ll>());
+    sort(all(a), greater<ll>());0
     // for (auto x : a)
     //     cout << x << ' ';
     // cout << '\n';
