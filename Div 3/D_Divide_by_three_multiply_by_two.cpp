@@ -8,60 +8,88 @@ using namespace std;
 typedef long long int ll;
 #define all(x) x.begin(), x.end()
 #define mod 1000000007
+bool divided_by_three(ll x, ll y)
+{
+    if (x / 3 == y)
+        return true;
+    else
+        return false;
+}
+bool multiply_by_two(ll x, ll y)
+{
+    if (x * 2 == y)
+        return true;
+    else
+        return false;
+}
+void print(vector<ll> ans)
+{
+    for (auto x : ans)
+        cout << x << ' ';
+    cout << '\n';
+}
 void solve(vector<ll> v, vector<ll> a, int n)
 {
-    int ans = 0;
-    vector<ll> f_ans;
-    for (int i = 0; i < n; i++)
+    // print(v);
+    for (int i = 0; i < v.size(); i++)
     {
-        ll x = a[i], z = -1;
-        f_ans.push_back(x);
-        x = x / 3;
-        for (int j = 0; j < n; j++)
+        vector<ll> ans;
+        ll x = v[i];
+        for (int j = 0; j < v.size(); j++)
         {
-
-            ll y = a[j];
-            if (x == y)
+            ll y = v[j];
+            if (x != y)
             {
-                f_ans.push_back(y);
-                y /= 3;
-                j -= 1;
-            }
-            else
-            {
-                if (z > 0)
-                    x = z / 3;
-
-                if ((x == y) and (f_ans.size() <= n))
+                if (divided_by_three(x, y))
                 {
-                    f_ans.push_back(y);
-                    y *= 2;
-                    for (int k = 0; k < n; k++)
+                    auto it = find(all(ans), y);
+                    if (it != ans.end())
                     {
-                        z = a[k];
-                        if ((y == z) and (f_ans.size() <= n))
+                        if (ans.empty())
                         {
-                            f_ans.push_back(y);
-                            // for (auto x : f_ans)
-                            //     cout << x << ' ';
-                            // cout << '\n';
-                            y = z;
-                            y *= 2;
-                            k = -1;
+                            ans.push_back(x);
+                            ans.push_back(y);
+                            x = y;
+                            print(ans);
+                        }
+                        else
+                        {
+                            ans.push_back(y);
+                            x = y;
+                            print(ans);
                         }
                     }
-                    j = -1;
                 }
+                if (multiply_by_two(x, y))
+                {
+                    auto it = find(all(ans), y);
+                    if (it != ans.end())
+                    {
+                        if (ans.empty())
+                        {
+                            ans.push_back(x);
+                            ans.push_back(y);
+                            x = y;
+                            print(ans);
+                        }
+                        else
+                        {
+                            ans.push_back(y);
+                            x = y;
+                            print(ans);
+                        }
+                    }
+                }
+
+                // if (ans.size() == n)
+                // {
+                for (auto x : ans)
+                    cout << x << ' ';
+                cout << '\n';
+                // return;
+                // }
             }
         }
-        if (f_ans.size() == n)
-        {
-            for (auto x : f_ans)
-                cout << x << ' ';
-            cout << '\n';
-            return;
-        }
-        f_ans.clear();
     }
 }
 int32_t main()
@@ -76,9 +104,6 @@ int32_t main()
         a[i] = v[i];
     }
     sort(all(v), greater<ll>());
-    sort(all(a), greater<ll>());0
-    // for (auto x : a)
-    //     cout << x << ' ';
-    // cout << '\n';
+    sort(all(a), greater<ll>());
     solve(v, a, n);
 }
