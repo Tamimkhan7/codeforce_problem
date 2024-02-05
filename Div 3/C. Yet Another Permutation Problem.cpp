@@ -17,9 +17,12 @@ int32_t main()
     {
         int n;
         cin >> n;
-        vector<int> v = {};
+        vector<int> v, vv;
         for (int i = 1; i <= n; i++)
+        {
             v.push_back(i);
+            vv.push_back(i);
+        }
         for (int i = n; i >= 2; i--)
         {
             for (int j = i - 1; j >= 2; j--)
@@ -31,14 +34,56 @@ int32_t main()
                     if (it != v.end())
                         v.push_back(i);
                     if (it2 != v.end())
-                    {
                         v.push_back(j);
-                    }
                     break;
                 }
             }
         }
-        for (auto x : v)
+
+        int p = n;
+        if (v.size() > p)
+        {
+            for (auto x : v)
+            {
+                if (p != 0)
+                {
+                    v.erase(v.begin());
+                    p--;
+                }
+            }
+        }
+        vector<int> ans;
+        int x = v[0];
+        ans.push_back(x);
+        for (int i = 1; i < v.size(); i++)
+        {
+            int flag = 0;
+            for (int j = ans.size(); j >= 0; j--)
+            {
+                if (v[i] == ans[j])
+                {
+                    flag = 1;
+                    break;
+                }
+            }
+            if (flag == 0)
+                ans.push_back(v[i]);
+        }
+        for (int i = 1; i <= n; i++)
+        {
+            int flag = 0;
+            for (int j = 0; j < ans.size(); j++)
+            {
+                if (i == ans[j])
+                {
+                    flag = 1;
+                    break;
+                }
+            }
+            if (flag == 0)
+                ans.push_back(i);
+        }
+        for (auto x : ans)
             cout << x << ' ';
         cout << '\n';
     }

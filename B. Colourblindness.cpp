@@ -1,53 +1,43 @@
 #include <bits/stdc++.h>
 using namespace std;
-int main()
+#define ordered_set tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update>
+#define MTK                       \
+    ios_base::sync_with_stdio(0); \
+    cin.tie(0);                   \
+    cout.tie(0);
+typedef long long int ll;
+#define all(x) x.begin(), x.end()
+#define mod 1000000007
+int32_t main()
 {
+    MTK;
     int t;
-    cin>>t;
-    while(t--)
+    cin >> t;
+    while (t--)
     {
         int n;
-        cin>>n;
-        string s,ss;
-        cin>>s>>ss;
-        int c=0, k=0;
-        if(n==1)
+        cin >> n;
+        string a, b;
+        cin >> a >> b;
+        int flag = 0;
+        for (int i = 0; i < n; i++)
         {
-            for(int i=0; i<1; i++)
-            {
-                if( s[i] == 'G')
-                    c++;
-            }
-            for(int i=0; i<1; i++)
-            {
-                if( ss[i] == 'G' || ss[i] == 'B')
-                    k++;
-            }
+            if (a[i] == 'R' and b[i] == 'R')
+                flag++;
+            else if (a[i] == 'G' and b[i] == 'B')
+                flag++;
+            else if (a[i] == 'B' and b[i] == 'G')
+                flag++;
+            else if (a[i] == 'G' and b[i] == 'G')
+                flag++;
+            else if (a[i] == 'B' and b[i] == 'B')
+                flag++;
+            else
+                flag = 0;
         }
+        if (flag == n)
+            cout << "YES" << '\n';
         else
-        {
-            for(int i=0; i<1; i++)
-            {
-                //cout<<s[i+1]<<endl;
-                if( s[i+1] == 'G')
-                    c++;
-            }
-            for(int i=0; i<1; i++)
-            {
-                //cout<<ss[i+1]<<endl;
-                if( ss[i+1] == 'G' || ss[i+1] == 'B')
-                    k++;
-            }
-            //cout<<k<<endl<<c<<endl;
-        }
-
-        if(k==c && k !=0)
-        {
-            cout<<"YES"<<endl;
-        }
-        else
-        {
-            cout<<"NO"<<endl;
-        }
+            cout << "NO" << '\n';
     }
 }
