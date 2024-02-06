@@ -13,14 +13,14 @@ void solve()
     int n;
     string s;
     cin >> n >> s;
-    vector<char> a, b;
-    int ans = 0;
+    vector<char> a, b, c;
+    int ans = 0, ac = 0;
     for (auto x : s)
     {
         int flag = 0;
         if (ans == 0)
         {
-            for (int i = a.size() - 1; i >= 0; i--)
+            for (int i = 0; i < a.size(); i++)
             {
                 if (a[i] == x)
                     flag = 1;
@@ -28,24 +28,23 @@ void solve()
             if (flag == 0)
                 a.push_back(x);
             else
-                ans++;
+            {
+                b.push_back(x);
+                ans = 1;
+            }
         }
-        cout << a.size() << '\n';
-        for (int i = b.size() - 1; i >= 0; i--)
-        {
-            if (b[i] == x)
-                flag = 1;
-        }
-        if (flag == 0)
-            b.push_back(x);
         else
         {
-            cout << x << '\n';
-            cout << b.size() << '\n';
-            return;
+            for (int i = 0; i < b.size(); i++)
+            {
+                if (b[i] == x)
+                    flag = 1;
+            }
+            if (flag == 0)
+                b.push_back(x);
         }
     }
-    cout << a.size() << ' ' << b.size() << '\n';
+    cout << a.size() + b.size() << '\n';
 }
 int32_t main()
 {
