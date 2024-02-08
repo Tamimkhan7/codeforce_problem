@@ -17,83 +17,62 @@ int32_t main()
     {
         int n;
         cin >> n;
-        vector<string> a, b, c;
+        int m = n;
+        n *= 3;
+        vector<string> v(n);
+        for (int i = 0; i < n; i++)
+            cin >> v[i];
+        unordered_map<string, int> mp;
         for (int i = 0; i < n; i++)
         {
-            string s;
-            cin >> s;
-            a.push_back(s);
+            string x;
+            cin >> x;
+            mp[x]++;
         }
-        for (int i = 0; i < n; i++)
+        int x = 0, ac = 0;
+        int ans = 0, ans2 = 0, ans3 = 0;
+        for (auto s : v)
         {
-            string s;
-            cin >> s;
-            b.push_back(s);
-        }
-        for (int i = 0; i < n; i++)
-        {
-            string s;
-            cin >> s;
-            c.push_back(s);
-        }
-
-        int ans1 = 0, ans2 = 0, ans3 = 0;
-        for (int i = 0; i < a.size(); i++)
-        {
-            int flag = 0, flag1 = 0;
-            string ss;
-            for (int j = 0; j < b.size(); j++)
+            x++;
+            if (x == m)
             {
-                if (a[i] == b[j])
+                ac++;
+                x = 0;
+            }
+            for (auto [p, q] : mp)
+            {
+                if (ac == 0)
                 {
-                    flag = 1;
-                    auto it = find(all(b), b[j]);
-                    b.erase(it);
+                    if (p == s)
+                    {
+                        if (q == 1)
+                            ans += 3;
+                        else if (q == 2)
+                            ans += 1;
+                    }
+                }
+                if (ac == 1)
+                {
+                    if (p == s)
+                    {
+                        if (q == 1)
+                            ans2 += 3;
+                        else if (q == 2)
+                            ans2 += 1;
+                    }
+                }
+                if (ac == 2)
+                {
+                    if (p == s)
+                    {
+                        if (q == 1)
+                            ans3 += 3;
+                        else if (q == 2)
+                            ans3 += 1;
+                    }
                 }
             }
-            for (int j = 0; j < c.size(); j++)
-            {
-                if (a[i] == c[j])
-                {
-                    flag1 = 1;
-                    auto it = find(all(c), c[j]);
-                    c.erase(it);
-                }
-            }
-            if (flag != 0 and flag1 == 0)
-            {
-                ans1 += 1;
-                ans2 += 1;
-            }
-            else if (flag == 0 and flag1 != 0)
-            {
-                ans1 += 1;
-                ans3 += 1;
-            }
-            else if (flag == 0 and flag1 == 0)
-                ans1 += 3;
         }
-        for (int i = 0; i < b.size(); i++)
-        {
-            int flag = 0;
-            for (int j = 0; j < c.size(); j++)
-            {
-                if (b[i] == c[j])
-                {
-                    flag = 1;
-                    auto it = find(all(c), c[j]);
-                    c.erase(it);
-                }
-            }
-            if (flag == 1)
-            {
-                ans2 += 1;
-                ans3 += 1;
-            }
-            else
-                ans2 += 3;
-        }
-        ans3 += (c.size()) * 3;
-        cout << ans1 << ' ' << ans2 << ' ' << ans3 << '\n';
+        cout << ans << ' ' << ans2 << ' ' << ans3 << '\n';
     }
 }

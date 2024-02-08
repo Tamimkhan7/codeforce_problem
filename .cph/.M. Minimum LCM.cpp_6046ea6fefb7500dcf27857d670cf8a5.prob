@@ -1,0 +1,1 @@
+{"name":"Local: M","url":"/home/tamim/Desktop/codeforce_problem/M. Minimum LCM.cpp","tests":[{"id":1707370585920,"input":"4\n2\n9\n5\n10\n","output":""},{"id":1707370913408,"input":"1\n15","output":"5 10"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/tamim/Desktop/codeforce_problem/M. Minimum LCM.cpp","group":"local","local":true}
