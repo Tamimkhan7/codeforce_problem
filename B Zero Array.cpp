@@ -1,54 +1,55 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define ordered_set tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update>
-#define faster                    \
+#define MTK                       \
     ios_base::sync_with_stdio(0); \
     cin.tie(0);                   \
     cout.tie(0);
-#define sq(x) (x) * (x)
-#define PI acos(-1.0)
+typedef long long int ll;
 #define all(x) x.begin(), x.end()
 #define mod 1000000007
-typedef long long int ll;
-typedef unsigned long long int llu;
-#define pb push_back
-#define pop pop_back()
-#define len(a) sizeof(a)
-#define lc (n * 2)
-#define rc ((n * 2) + 1)
-int main()
+int32_t main()
 {
-    faster;
-    int n, k, a;
+    MTK;
+    int n;
     cin >> n;
-    vector<int> v, v2;
+    deque<ll> v;
+    map<int, int> mp;
     for (int i = 0; i < n; i++)
     {
-        cin >> a;
-        v.push_back(a);
+        int x;
+        cin >> x;
+        mp[x]++;
     }
-    int c = 0;
-    for (int i = 0; i < n; i++)
+    for (auto [x, y] : mp)
     {
-        for (int j = i; j < n; j++)
+        if (y == 1)
+            v.push_back(x);
+    }
+    sort(all(v), greater<int>());
+    while (v.size() > 1)
+    {
+        ll a = v.front();
+        v.pop_front();
+        ll b = v.front();
+        v.pop_front();
+        if (a == b)
+            continue;
+        else
         {
-            k = v[j] - v[i];
-            v2.push_back(k);
-            v = v2;
-        }
-        n -= 1;
-        for (int i = 0; i < n; i++)
-        {
-            if (v[i] == v[i + 1])
-            {
-                c++;
-            }
+            a--;
+            b--;
+            if (b != 0)
+                v.push_front(b);
+            if (a != 0)
+                v.push_front(a);
         }
     }
-    if (c != 0)
-        cout << "YES" << endl;
+    // for (auto x : v)
+    //     cout << x << ' ';
+    // cout << '\n';
+    if (v.empty())
+        cout << "YES" << '\n';
     else
-        cout << "NO" << endl;
-
-    return 0;
+        cout << "NO" << '\n';
 }
