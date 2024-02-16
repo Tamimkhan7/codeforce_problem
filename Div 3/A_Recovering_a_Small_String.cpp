@@ -8,46 +8,34 @@ using namespace std;
 typedef long long int ll;
 #define all(x) x.begin(), x.end()
 #define mod 1000000007
+void solve()
+{
+    int n;
+    cin >> n;
+    string s;
+    for (int i = 1; i <= 26; i++)
+    {
+        for (int j = 1; j <= 26; j++)
+        {
+            for (int k = 1; k <= 26; k++)
+            {
+                if ((i + j + k) == n)
+                {
+                    s.push_back('a' + i - 1);
+                    s.push_back('a' + j - 1);
+                    s.push_back('a' + k - 1);
+                    cout << s << '\n';
+                    return;
+                }
+            }
+        }
+    }
+}
 int32_t main()
 {
     MTK;
     int t;
     cin >> t;
     while (t--)
-    {
-        string s;
-        int n;
-        cin >> n;
-        int cnt = 0, flag = 0;
-        while (n > 0)
-        {
-            if (n > 27)
-            {
-                cnt++;
-                char x = 'z';
-                s.push_back(x);
-                n -= 26;
-            }
-            else
-            {
-                if (cnt < 2)
-                {
-                    cnt++;
-                    char x = 'a';
-                    s.push_back(x);
-                    n -= 1;
-                }
-                else
-                {
-                    n--;
-                    char x = ('a' + n);
-                    s.push_back(x);
-                    n = 0;
-                }
-            }
-        }
-        // if (flag == 1)
-        sort(all(s));
-        cout << s << '\n';
-    }
+        solve();
 }

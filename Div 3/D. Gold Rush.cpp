@@ -8,36 +8,36 @@ using namespace std;
 typedef long long int ll;
 #define all(x) x.begin(), x.end()
 #define mod 1000000007
+int N = 1e4;
 void solve()
 {
-    int n;
-    cin >> n;
-    vector<int> v(n + 8);
-    ll sum = 0;
-    for (int i = 1; i <= n; i++)
+    int n, m;
+    cin >> n >> m;
+    if ((m == n))
     {
-        cin >> v[i];
-        sum += v[i];
+        cout << "YES" << '\n';
+        return;
     }
-    ll x = (1LL * sum / n);
-    ll cnt = 0;
-    for (int i = 1; i <= n; i++)
+    ll mx, mn;
+    while (N--)
     {
-        if (cnt < 0)
+        if (n % 3 != 0)
         {
             cout << "NO" << '\n';
             return;
         }
-        if (v[i] > x)
-            cnt += (v[i] - x);
-        else
-            cnt -= (x - v[i]);
+        mn = n / 3;
+        mx = mn * 2;
+        // cout << mx << ' ' << mn << '\n';
+        if ((mx / 3 == m and mx % 3 == 0) || (mn / 3 == m and mn % 3 == 0) || (mn == m) || (mx == m))
+        {
+            cout << "YES" << '\n';
+            return;
+        }
+        n = mx;
     }
-    if (cnt < 0)
-        cout << "NO" << '\n';
-    else
-        cout << "YES" << '\n';
 }
+// using dfs stap for that the problem
 int32_t main()
 {
     MTK;

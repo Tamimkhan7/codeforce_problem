@@ -1,55 +1,43 @@
 #include <bits/stdc++.h>
 using namespace std;
-#include <ext/pb_ds/tree_policy.hpp>
-using namespace __gnu_pbds;
 #define ordered_set tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update>
-#define faster                    \
+#define MTK                       \
     ios_base::sync_with_stdio(0); \
     cin.tie(0);                   \
     cout.tie(0);
-#define sq(x) (x) * (x)
-#define PI acos(-1.0)
+typedef long long int ll;
 #define all(x) x.begin(), x.end()
-#define nl '\n'
 #define mod 1000000007
+ll sum;
 void solve()
 {
     int n, q;
     cin >> n >> q;
-    int arr[n];
-    for (int i = 0; i < n; i++)
-    {
-        cin >> arr[i];
-    }
+    vector<int> v(n + 8), pre(n + 8);
+    for (int i = 1; i <= n; i++)
+        cin >> v[i];
+    sum = accumulate(all(v), 0);
+    pre[0] = 0;
+    for (int i = 1; i <= n; i++)
+        pre[i] = pre[i - 1] + v[i];
+
     while (q--)
     {
-        long long int sum = 0, sum2 = 0;
         int l, r, k;
         cin >> l >> r >> k;
-        for (int i = 0; i < n; i++)
-        {
-            sum += arr[i];
-        }
-        for (int i = l - 1; i < r; i++)
-        {
-            sum2 += k;
-            sum -= arr[i];
-        }
-         sum = sum + sum2;
-        if (sum % 2 != 0)
-            cout
-                << "YES" << endl;
-        else
-            cout << "NO" << endl;
+        ll ans = pre[r] - pre[l - 1];
+        ll res = sum;
+        res -= ans;
+        ll x = (((r - l) + 1) * k) + res;
+        string resslt = (x % 2 == 0) ? "NO" : "YES";
+        cout << resslt << '\n';
     }
 }
-int main()
+int32_t main()
 {
-    faster;
+    MTK;
     int t;
     cin >> t;
     while (t--)
-    {
         solve();
-    }
 }

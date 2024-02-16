@@ -12,79 +12,31 @@ void solve()
 {
     int n;
     cin >> n;
-    vector<int> v(n);
+    vector<int> v, ans, pre(n);
     for (int i = 0; i < n; i++)
-        cin >> v[i];
-    ll sum = 0, sum2 = 0;
+    {
+        int x;
+        cin >> x;
+        v.push_back(x);
+    }
     for (int i = 0; i < n; i++)
     {
         if (i % 2 == 0)
-            sum += v[i];
+            ans.push_back(v[i]);
         else
-            sum2 += v[i];
-        if (sum == sum2)
-        {
-            cout << "YES" << '\n';
-            return;
-        }
+            ans.push_back(-v[i]);
     }
-    ll res = sum, res2 = sum2;
-    for (int i = 0; i < n; i++)
-    {
-        if ((sum > sum2) and (i % 2 == 0))
-        {
-            sum -= v[i];
-            sum2 -= v[i + 1];
-            if (sum == sum2)
-            {
-                cout << "YES" << '\n';
-                return;
-            }
-        }
-        else if ((sum2 > sum) and (i % 2 != 0))
-        {
-            sum2 -= v[i];
-            sum -= v[i + 1];
-            if (sum == sum2)
-            {
-                cout << "YES" << '\n';
-                return;
-            }
-        }
-    }
-    reverse(all(v));
-    sum = res, sum2 = res2;
-    for (int i = 0; i < n; i++)
-    {
-        if ((sum > sum2) and (i % 2 == 0))
-        {
-            sum -= v[i];
-            sum2 -= v[i + 1];
-            if (sum == sum2)
-            {
-                cout << "YES" << '\n';
-                return;
-            }
-        }
-        else if ((sum2 > sum) and (i % 2 != 0))
-        {
-            sum2 -= v[i];
-            sum -= v[i + 1];
-            if (sum == sum2)
-            {
-                cout << "YES" << '\n';
-                return;
-            }
-        }
-    }
-    // if (sum == sum2)
-    // {
-    //     cout << "YES" << '\n';
-    //     return;
-    // }
-    cout << "NO" << '\n';
-}
 
+    pre[0] = ans[0];
+    for (int i = 1; i < n; i++)
+        pre[i] = pre[i - 1] + ans[i];
+    for (auto x : pre)
+        cout << x << ' ';
+    cout << '\n';
+    // for (int i = 1; i <= n; i++)
+    //     cout << pre[i] << ' ';
+    // cout << '\n';
+}
 int32_t main()
 {
     MTK;
@@ -95,3 +47,22 @@ int32_t main()
         solve();
     }
 }
+
+/*// for (int i = 0; i < n; i++)
+    // {
+    //     int sum = 0, sum2 = 0;
+    //     for (int j = i; j < n; j++)
+    //     {
+    //         if (j % 2 == 0)
+    //             sum += v[j];
+    //         else
+    //             sum2 += v[j];
+    //         if (sum == sum2)
+    //         {
+    //             cout << "YES" << '\n';
+    //             return;
+    //         }
+    //     }
+    // }
+    // cout << "NO" << '\n';
+}*/

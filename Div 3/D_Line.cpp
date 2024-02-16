@@ -15,39 +15,74 @@ int32_t main()
     cin >> t;
     while (t--)
     {
-        int n;
-        cin >> n;
+        int n, x, a;
         string s;
-        cin >> s;
-        int x = n / 2, ab = 0;
-        for (int i = 0; i < n; i++)
+        cin >> n >> s;
+        if (n % 2 == 0)
         {
-            ab++;
-            int flag = 0, cnt = 0;
-            for (int k = i; k < n; k++)
+            x = n / 2;
+            for (int i = 0; i < x; i++)
             {
-                if (k < x and (s[k] == 'L') and (cnt < ab))
+                if (s[i] == 'L')
+                    s[i] = 'R';
+                int ans = 0;
+                for (int j = 0; j < n; j++)
                 {
-                    s[k] = 'R';
-                    cnt++;
+                    if (s[j] == 'L')
+                        ans += j - 0;
+                    else
+                        ans += (n - 1) - j;
                 }
-                else if (k > x and (s[k] == 'R') and (cnt < ab))
-                {
-                    s[k] = 'L';
-                    cnt++;
-                }
+                cout << ans << ' ';
             }
-            int ans = 0;
-            cout << s << '\n';
-            for (int j = 0; j < n; j++)
+            for (int i = x; i < n; i++)
             {
-                if (s[j] == 'R')
-                    ans += (n - (j + 1));
-                else
-                    ans += j;
+                if (s[i] == 'R')
+                    s[i] = 'L';
+                int ans = 0;
+                for (int j = 0; j < n; j++)
+                {
+                    if (s[j] == 'L')
+                        ans += j - 0;
+                    else
+                        ans += (n - 1) - j;
+                }
+                cout << ans << ' ';
             }
-            // cout << ans << ' ';
+            cout << '\n';
         }
-        cout << '\n';
+        else
+        {
+            a = n / 2;
+            for (int i = 0; i < a; i++)
+            {
+                if (s[i] == 'L')
+                    s[i] = 'R';
+                int ans = 0;
+                for (int j = 0; j < n; j++)
+                {
+                    if (s[j] == 'L')
+                        ans += j - 0;
+                    else
+                        ans += (n - 1) - j;
+                }
+                cout << ans << ' ';
+            }
+            for (int i = a + 1; i <= n; i++)
+            {
+                if (s[i] == 'R')
+                    s[i] = 'L';
+                int ans = 0;
+                for (int j = 0; j < n; j++)
+                {
+                    if (s[j] == 'L')
+                        ans += j - 0;
+                    else
+                        ans += (n - 1) - j;
+                }
+                cout << ans << ' ';
+            }
+            cout << '\n';
+        }
     }
 }

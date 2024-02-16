@@ -1,55 +1,32 @@
 #include <bits/stdc++.h>
 using namespace std;
-#include <ext/pb_ds/tree_policy.hpp>
-using namespace __gnu_pbds;
 #define ordered_set tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update>
-#define faster                    \
+#define MTK                       \
     ios_base::sync_with_stdio(0); \
     cin.tie(0);                   \
     cout.tie(0);
-#define sq(x) (x) * (x)
-#define PI acos(-1.0)
-#define all(x) x.begin(), x.end()
-#define nl '\n'
-#define mod 1000000007
 typedef long long int ll;
-typedef unsigned long long int llu;
-
-int main()
+#define mod 1000000007
+int32_t main()
 {
+    MTK;
     int n;
     cin >> n;
-    int arr[n];
-    for (int i = 1; i <= n; i++)
+    vector<int> v(n);
+    for (int i = 0; i < n; i++)
+        cin >> v[i];
+    int mx = *max_element(all(v));
+    int mn = *min_element(all(v));
+    int mx_element = -1, mn_element;
+    for (int i = 0; i < n; i++)
     {
-        cin >> arr[i];
+        if (v[i] == mx and mx_element == -1)
+            mx_element = i;
+        else if (v[i] == mn)
+            mn_element = i;
     }
-    int c = 1, k = 0;
-    int maxi = arr[1];
-    int mini = arr[1];
-    for (int i = 1; i <= n; i++)
-    {
-        if (arr[i] > maxi)
-        {
-            c = i;
-            maxi = arr[i];
-        }
-        else if (arr[i] <= mini)
-        {
-            k = i;
-            mini = arr[i];
-        }
-    }
-    // cout << c << " " << k << endl;
-    int p = n / 2;
-    if (c > p && k <= p)
-    {
-        int m = abs(1 - c) + n - k;
-        cout << m - 1 << endl;
-    }
-    else
-    {
-        int m = abs(1 - c) + n - k;
-        cout << m << endl;
-    }
+    int ans = (mx_element + ((n - 1) - (mn_element)));
+    if (mx_element > mn_element)
+        ans--;
+    cout << ans << '\n';
 }
