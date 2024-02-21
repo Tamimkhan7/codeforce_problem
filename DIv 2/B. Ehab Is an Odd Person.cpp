@@ -13,26 +13,70 @@ int32_t main()
     MTK;
     int n;
     cin >> n;
-    vector<int> v(n);
-    for (int i = 0; i < n; i++)
-        cin >> v[i];
+    vector<int> v, even, odd, ami, tumi;
     for (int i = 0; i < n; i++)
     {
-        int mn = 1e9 + 7;
-        for (int j = i + 1; j < n; j++)
+        int x;
+        cin >> x;
+        v.push_back(x);
+        if (x % 2 == 0)
         {
-            if ((v[i] + v[j]) % 2)
-            {
-                mn = min(v[j], mn);
-            }
+            even.push_back(x);
+            ami.push_back(x);
         }
-        if ((mn != 1e9 + 7) and (mn < v[i]))
+        else
         {
-            cout << mn << ' ' << v[i] << '\n';
-            swap(mn, v[i]);
+            odd.push_back(x);
+            tumi.push_back(x);
         }
     }
-    for (auto x : v)
-        cout << x << ' ';
-    cout << '\n';
+    sort(all(even));
+    sort(all(odd));
+    vector<int> ans;
+    int flag = 0;
+    while ((!even.empty()) && (!odd.empty()))
+    {
+        if (even.front() < odd.front())
+        {
+            ans.push_back(even.front());
+            even.erase(even.begin());
+        }
+        else
+        {
+            ans.push_back(odd.front());
+            odd.erase(odd.begin());
+        }
+        flag = 1;
+    }
+    if (flag != 0)
+    {
+        while (!even.empty())
+        {
+            ans.push_back(even.front());
+            even.erase(even.begin());
+        }
+        while (!odd.empty())
+        {
+            ans.push_back(odd.front());
+            odd.erase(odd.begin());
+        }
+        for (auto x : ans)
+            cout << x << ' ';
+        cout << '\n';
+    }
+    else
+    {
+        if (!even.empty())
+        {
+            for (auto x : ami)
+                cout << x << ' ';
+            cout << '\n';
+        }
+        else
+        {
+            for (auto x : tumi)
+                cout << x << ' ';
+            cout << '\n';
+        }
+    }
 }

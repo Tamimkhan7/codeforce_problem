@@ -6,7 +6,6 @@ using namespace std;
     cin.tie(0);                   \
     cout.tie(0);
 typedef long long int ll;
-#define ull unsigned long long int
 #define all(x) x.begin(), x.end()
 #define mod 1000000007
 int32_t main()
@@ -14,53 +13,46 @@ int32_t main()
     MTK;
     int n;
     cin >> n;
-    deque<ll> a, b;
+    int res = n * 2;
+    int a[res];
+    for (int i = 0; i < res; i++)
+        cin >> a[i];
+
+    vector<int> ami, tumi;
     for (int i = 0; i < n; i++)
-    {
-        int x;
-        cin >> x;
-        a.push_back(x);
-    }
+        ami.push_back(a[i]);
+    for (int i = n; i < res; i++)
+        tumi.push_back(a[i]);
+
+    ll ans = 1LL * (accumulate(all(ami), 0));
+    ll ans2 = 1LL * (accumulate(all(tumi), 0));
+
+    sort(a, a + res);
+    vector<int> x, y;
     for (int i = 0; i < n; i++)
+        x.push_back(a[i]);
+    for (int i = n; i < res; i++)
+        y.push_back(a[i]);
+
+    ll sum = 1LL * (accumulate(all(x), 0));
+    ll sum2 = 1LL * (accumulate(all(y), 0));
+
+    if (ans != ans2)
     {
-        int x;
-        cin >> x;
-        b.push_back(x);
-    }
-    ull sum = accumulate(all(a), 0);
-    ull sum2 = accumulate(all(b), 0);
-    // cout << sum << ' ' << sum2 << '\n';
-    if (sum == sum2)
-    {
-        int x = a.back();
-        a.pop_back();
-        b.push_front(x);
-        int y = b.back();
-        b.pop_back();
-        a.push_front(y);
-        sum = accumulate(all(a), 0);
-        sum2 = accumulate(all(b), 0);
-        if (sum == sum2)
-            cout << -1 << '\n';
-        else
-        {
-            for (auto x : b)
-                cout << x << ' ';
-            for (auto x : a)
-                cout << x << ' ';
-            cout << '\n';
-        }
-    }
-    else
-    {
-        vector<ll> ans;
-        for (auto x : a)
-            ans.push_back(x);
-        for (auto x : b)
-            ans.push_back(x);
-        sort(all(ans));
-        for (auto x : ans)
-            cout << x << ' ';
+        for (auto xp : ami)
+            cout << xp << ' ';
+        for (auto xp : tumi)
+            cout << xp << ' ';
         cout << '\n';
     }
+    else if (sum != sum2)
+    {
+        for (auto xp : x)
+            cout << xp << ' ';
+        for (auto xp : y)
+            cout << xp << ' ';
+        cout << '\n';
+    }
+    else
+        cout << -1 << '\n';
 }
