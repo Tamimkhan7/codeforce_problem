@@ -86,5 +86,9 @@
         "typeindex": "cpp",
         "typeinfo": "cpp",
         "variant": "cpp"
+    },
+    "cmake.options.statusBarVisibility": "visible",
+    "debug.javascript.resourceRequestOptions": {
+    
     }
 }
