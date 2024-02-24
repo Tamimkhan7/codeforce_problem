@@ -15,7 +15,8 @@ int main()
         }
         mx = max(mx, ans);
         ans =x;
-        //tamimkhan
+        //tamimkhanami
     }
     cout<<mx<<'\n';
+
 }
