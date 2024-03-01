@@ -2,21 +2,20 @@
 using namespace std;
 int main()
 {
-    int x,y;
-    cin>>x>>y;
+    int x, y;
+    cin >> x >> y;
     int ans = x;
-    int mx=-1e9;
-    while(y--)
+    int mx = -1e9;
+    while (y--)
     {
         int z;
-        while(cin>>z)
+        while (cin >> z)
         {
             ans += z;
         }
         mx = max(mx, ans);
-        ans =x;
-        //tamimkhanami
+        ans = x;
+        // tamimkhanami
     }
-    cout<<mx<<'\n';
-
+    cout << mx << '\n';
 }
