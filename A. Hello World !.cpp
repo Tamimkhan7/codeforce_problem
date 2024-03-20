@@ -12,12 +12,6 @@ typedef long long int ll;
 int32_t main()
 {
     MTK;
-    int n, r;
-    cin >> n >> r;
-    r /= 2;
-    double ans = (double)(((3.1416) * (r * r)) * n);
-    ans *= ans;
-    cout << fixed << setprecision(4) << ans << '\n';
-
-    return 0;
+    cout<<"Prime University Computer and Programming Club is the place to be for coding enthusiasts!"<<'\n';
+return 0;
 }

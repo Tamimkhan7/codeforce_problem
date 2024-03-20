@@ -12,12 +12,7 @@ typedef long long int ll;
 int32_t main()
 {
     MTK;
-    int n, r;
-    cin >> n >> r;
-    r /= 2;
-    double ans = (double)(((3.1416) * (r * r)) * n);
-    ans *= ans;
-    cout << fixed << setprecision(4) << ans << '\n';
-
-    return 0;
+   int a ,b ;cin>>a>>b;   
+   cout<<(((8*a)/2)+((9*b)/3))<<'\n';
+return 0;
 }

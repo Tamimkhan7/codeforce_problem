@@ -8,82 +8,78 @@ using namespace std;
 typedef long long int ll;
 #define all(x) x.begin(), x.end()
 #define mod 1000000007
-void sol(int a[], int n, int k, int mn)
+void solve()
 {
-    sort(a, a + n);
-    reverse(a, a + n);
+    int n, k;
+    cin >> n >> k;
+    vector<int> v(n), vv(n);
+    ll ans = 1;
     for (int i = 0; i < n; i++)
     {
-        int x = a[i], y = a[i + 1], final_res = 0, cm = 1;
-        while (cm < 20)
-        {
-            x++;
-            y++;
-            final_res += 2;
-            int ans = 1;
-            for (int j = 0; j < n; j++)
-            {
-                if ((a[i] != a[j]) || (a[i + 1] != a[j]))
-                    ans *= a[j];
-            }
-            ans *= x;
-            ans *= y;
-            cm++;
-            if (ans % k == 0)
-            {
-                mn = min(final_res, mn);
-                break;
-            }
-        }
+        cin >> v[i];
+        ans *= v[i];
+        vv[i] = v[i];
     }
-    cout << mn << '\n';
-}
-void solve(int a[], int n, int k)
-{
-    int mn = 100;
+    if (ans % k == 0)
+    {
+        cout << 0 << '\n';
+        return;
+    }
+    int res = 100;
     for (int i = 0; i < n; i++)
     {
-        int x = a[i], final_res = 0, cm = 1;
-        while (cm < 20)
+        int mn = v[i], x = 1;
+        ll ami = ans;
+        while (x <= k)
         {
-            x++;
-            final_res++;
-            int ans = 1;
-            for (int j = 0; j < n; j++)
+            ami /= mn;
+            mn++;
+            ami *= mn;
+            if (ami % k == 0)
             {
-                if (a[i] != a[j])
-                    ans *= a[j];
-            }
-            ans *= x;
-            cm++;
-            if (ans % k == 0)
-            {
-                mn = min(final_res, mn);
+                res = min(x, res);
                 break;
             }
+            x++;
         }
     }
-    sol(a, n, k, mn);
+    int cnt = 0;
+    ll ami = ans;
+
+    int x = 5000;
+    while (x--)
+    {
+        cnt++;
+        int mn = *min_element(all(v));
+        ami /= mn;
+        auto it = find(all(v), mn);
+        v.erase(it);
+        mn++;
+        v.push_back(mn);
+        ami *= mn;
+        if (ami % k == 0)
+            break;
+    }
+    sort(all(vv));
+    ami = ans;
+    int count = 0;
+    for (int i = 0; i < n; i++)
+    {
+        ami /= vv[i];
+        count++;
+        vv[i]++;
+        ami *= vv[i];
+        if (ami % k == 0)
+            break;
+    }
+    cout << min(cnt, min(res, count)) << '\n';
 }
+
 int32_t main()
 {
     MTK;
     int t;
     cin >> t;
     while (t--)
-    {
-        int n, k;
-        cin >> n >> k;
-        int a[n];
-        ll res = 1;
-        for (int i = 0; i < n; i++)
-        {
-            cin >> a[i];
-            res *= a[i];
-        }
-        if (res % k == 0)
-            cout << 0 << '\n';
-        else
-            solve(a, n, k);
-    }
+        solve();
 }
