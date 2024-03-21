@@ -16,10 +16,6 @@ bool cmp(pair<int, string> a, pair<int, string> b)
     else
         return false;
 }
-void solve()
-{
-}
-
 int main()
 {
     MTK;
@@ -44,11 +40,6 @@ int main()
         {
             int x = stoi(word);
             v.push_back(x);
-        }
-        if (vs.size() != v.size())
-        {
-            cout << "Error: Number of words and numbers do not match\n";
-            continue; // Skip to the next iteration if sizes don't match
         }
         vector<pair<int, string>> ans;
         for (int i = 0; i < v.size(); i++)

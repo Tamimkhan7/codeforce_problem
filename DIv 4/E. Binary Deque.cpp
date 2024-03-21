@@ -1,12 +1,10 @@
 #include <bits/stdc++.h>
 using namespace std;
-
 #define ordered_set tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update>
 #define MTK                       \
     ios_base::sync_with_stdio(0); \
     cin.tie(0);                   \
     cout.tie(0);
-
 typedef long long int ll;
 #define all(x) x.begin(), x.end()
 #define mod 1000000007
@@ -22,38 +20,20 @@ bool check(string a, string b)
 
 void solve()
 {
-    string s;
-    int n, ans = 0;
-    cin >> s >> n;
-
-    string ss = s.substr(0, 2);
-    string k = s.substr(3, 2);
-    int a = stoi(ss);
-    int b = stoi(k);
-
-    while (a < 24)
+    int n, k;
+    cin >> n >> k;
+    vector<int> v(n + 1);
+    int sum = 0;
+    for (int i = 1; i <= n; i++)
     {
-        cout << ss << ' ' << k << '\n';
-        if (check(ss, k))
-        {
-
-            ans++;
-        }
-
-        b += n;
-        a += b / 60;
-        b %= 60;
-
-        ss = to_string(a);
-        k = to_string(b);
-
-        if (a <= 9)
-            ss = "0" + ss;
-
-        if (b <= 9)
-            k = "0" + k;
+        cin >> v[i];
+        sum += v[i];
     }
-    cout << ans << '\n';
+    if (sum < k)
+    {
+        cout << -1 << '\n';
+        return;
+    }
 }
 
 int32_t main()
