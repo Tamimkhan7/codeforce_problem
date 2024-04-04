@@ -8,8 +8,9 @@ using namespace std;
 
 int main()
 {
-
-    int t;
-    cout << "safety" << '\n';
+    Faster;
+    int n;
+    cin >> n;
+    cout << 0 << '\n';
     return 0;
 }
