@@ -7,47 +7,62 @@ using namespace std;
     cout.tie(0);
 #define mod 1000000007
 typedef long long int ll;
-typedef unsigned long long int llu;
+void solve()
+{
+    int n;
+    cin >> n;
+    int a[n];
+    for (int i = 1; i <= n; i++)
+    {
+        int x;
+        cin >> x;
+        a[i] = x % 2;
+    }
+    int ans = 0;
+    for (int i = 1; i <= n; i++)
+    {
+        if (i % 2 == a[i])
+        {
+            for (int j = i + 1; j <= n; j++)
+            {
+                if (a[i] != a[j])
+                {
+                    int p = a[i] % j;
+                    int q = j % 2;
+                    // cout << p << ' ' << q << '\n';
+                    if (p != q)
+                    {
+                        swap(a[i], a[j]);
+                        ans++;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+    int one = 0, zero = 0;
+    for (int i = 1; i <= n; i++)
+    {
+        if (a[i] == 1)
+            one++;
+        else
+            zero++;
+    }
+    if (n % 2 == 0 and zero == one)
+    {
+        cout << ans << '\n';
+    }
+    else if (n % 2 == 1 and zero > one and (zero - one) == 1)
+        cout << ans << '\n';
+    else
+        cout << -1 << '\n';
+}
+
 int main()
 {
     faster;
     int t;
     cin >> t;
     while (t--)
-    {
-        int n;
-        cin >> n;
-        int arr[n];
-        for (int i = 0; i < n; i++)
-            cin >> arr[i];
-        if (n % 2 == 0)
-        {
-            n = n;
-        }
-        else
-        {
-            if (n == 1)
-                n = n;
-            else
-                n -= 1;
-        }
-        for (int i = 0; i < n; i++)
-        {
-            swap(arr[i], arr[i + 1]);
-            i++;
-        }
-        int c = 0;
-        for (int i = 0; i < n; i++)
-        {
-            if (arr[i] % 2 == 0 && arr[i + 1] != 0)
-            {
-                c++;
-                i++;
-            }
-               }
-        if (n == 1)
-            cout << -1 << endl;
-        else
-            cout << c << endl;
-    }
+        solve();
 }
